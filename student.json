@@ -2123,18 +2123,21 @@
   ],
   "carousel": [
     {
+      "id": 1,
       "order": 1,
       "title": "美丽景色",
       "imgUrl": "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1555293675&di=a807c0f74255accb5380165976293a84&imgtype=jpg&er=1&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F01398c5942618ca8012193a3f97976.jpg",
       "url": "http://www.aicoder.com"
     },
     {
+      "id": 2,
       "order": 2,
       "title": "美丽景色1",
       "imgUrl": "http://www.33lc.com/article/UploadPic/2012-10/2012101714102663437.jpg",
       "url": "/login.html"
     },
     {
+      "id": 3,
       "order": 3,
       "title": "美丽景色2",
       "imgUrl": "http://www.33lc.com/article/UploadPic/2012-10/2012101714103954400.jpg",

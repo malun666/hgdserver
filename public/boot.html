@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      href="./lib/bootstrap-3.3.7-dist/css/bootstrap.css"
+      rel="stylesheet"
+    />
+    <!-- <script src="https://cdn.bootcss.com/jquery/3.0.0-rc1/jquery.js"></script> -->
+    <script src="https://cdn.bootcss.com/jquery/1.12.2/jquery.min.js"></script>
+    <!-- <script src="https://cdn.bootcss.com/twitter-bootstrap/4.3.0/js/bootstrap.min.js"></script> -->
+    <script src="./lib/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+
+    <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.14.2/dist/bootstrap-table.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://unpkg.com/bootstrap-table@1.14.2/dist/bootstrap-table.min.js"></script>
+<!-- Latest compiled and minified Locales -->
+<script src="https://unpkg.com/bootstrap-table@1.14.2/dist/locale/bootstrap-table-zh-CN.min.js"></script>
+
+    <link href="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/css/bootstrap-editable.css" rel="stylesheet"/>
+<script src="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/js/bootstrap-editable.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <title>bdemo</title>
+  </head>
+  <body>
+    <div id="toolbar"></div>
+    <table id="table"></table>
+    <script>
+      $.ajaxSetup({
+        headers: {
+          Authorization: '232'
+        }
+      });
+      $('#table').bootstrapTable({
+        url: '/api/student/carousel', //请求后台的URL（*）
+        method: 'get', //请求方式（*）
+        toolbar: '#toolbar', //工具按钮用哪个容器
+        striped: true, //是否显示行间隔色
+        cache: false, //是否使用缓存，默认为true，所以一般情况下需要设置一下这个属性（*）
+        pagination: true, //是否显示分页（*）
+        sortable: false, //是否启用排序
+        sortOrder: 'asc', //排序方式
+        queryParams: {}, //传递参数（*）
+        sidePagination: 'server', //分页方式：client客户端分页，server服务端分页（*）
+        pageNumber: 1, //初始化加载第一页，默认第一页
+        pageSize: 10, //每页的记录行数（*）
+        pageList: [10, 25, 50, 100], //可供选择的每页的行数（*）
+        search: true, //是否显示表格搜索，此搜索是客户端搜索，不会进服务端，所以，个人感觉意义不大
+        strictSearch: true,
+        showColumns: true, //是否显示所有的列
+        showRefresh: true, //是否显示刷新按钮
+        minimumCountColumns: 2, //最少允许的列数
+        clickToSelect: true, //是否启用点击选中行
+        height: 500, //行高，如果没有设置height属性，表格自动根据记录条数觉得表格高度
+        uniqueId: 'id', //每一行的唯一标识，一般为主键列
+        showToggle: true, //是否显示详细视图和列表视图的切换按钮
+        cardView: false, //是否显示详细视图
+        detailView: false, //是否显示父子表
+        columns: [
+          {
+            checkbox: true
+          },
+          {
+            field: 'id',
+            title: '编号'
+          },
+          {
+            field: 'order',
+            title: '排序',
+            editable: {
+              mode: 'inline',
+              type: 'text',
+              title: '排序'
+            },
+            formatter: function(value, row, index, field) {
+              return '<a class="edit-link" href="javascript:0" data-type="text" data-pk="'+ row.id  +'" data-url="/api/student/carousel">' + value + '</a>';
+            }
+          },
+          {
+            field: 'imgUrl',
+            title: '图片地址',
+            editable: {
+              mode: 'inline',
+              type: 'text',
+              title: '图片地址'
+            },
+            formatter: function(value, row, index, field) {
+              return '<a class="edit-link" href="javascript:0" data-type="text" data-pk="'+ row.id  +'" data-url="/api/student/carousel">' + value + '</a>';
+            }
+          },
+          {
+            field: 'url',
+            title: '路径',
+            editable: {
+              mode: 'inline',
+              type: 'text',
+              title: '路径'
+            },
+            formatter: function(value, row, index, field) {
+              console.log(2)
+              return '<a class="edit-link" href="javascript:0" data-type="text" data-pk="'+ row.id  +'" data-url="/api/student/carousel">' + value + '</a>';
+            }
+          }
+        ],
+        onLoadSuccess: function() {
+          $('.edit-link').editable();
+          console.log('1 :', 1);
+          
+        },
+        onEditableSave: function(field, row, oldValue, $el) {
+          $.ajax({
+            type: 'post',
+            url: '/Editable/Edit',
+            data: { strJson: JSON.stringify(row) },
+            success: function(data, status) {
+              if (status == 'success') {
+                alert('编辑成功');
+              }
+            },
+            error: function() {
+              alert('Error');
+            },
+            complete: function() {}
+          });
+        }
+      });
+
+    </script>
+  </body>
+</html>
