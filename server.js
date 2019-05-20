@@ -10,6 +10,7 @@ const router2 = jsonServer.router({...materialArr, ...studenJson});
 const router3 = jsonServer.router(permissionData);
 const router = jsonServer.router({...materialArr, ...teacherJson});
 const userArr = require('./user');
+const routerUser = jsonServer.router({user:userArr});
 const multer = require('multer');
 const path = require('path');
 const middlewares = jsonServer.defaults();
@@ -47,6 +48,7 @@ server.use('/api/student', (req, res, next) => {
   }
 });
 
+
 // 用户登录成功
 server.post('/api/userlogin', (req, res) => {
   console.log(1); 
@@ -71,6 +73,7 @@ server.post('/api/userlogin', (req, res) => {
 server.use('/api/teacher', router);
 server.use('/api/student', router2);
 server.use('/per', router3);
+server.use('/api/', routerUser);
 
 // 文件上传
 server.all('/api/upload', upload.single('imgF'), function(req, res, next) {
