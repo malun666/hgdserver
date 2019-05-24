@@ -47,6 +47,16 @@ server.use('/api/student', (req, res, next) => {
     });
   }
 });
+server.use('/api/user', (req, res, next) => {
+  if (req.get('Authorization')) {
+    next();
+  } else {
+    res.status(401).jsonp({
+      code: 8,
+      msg: '用户没有登录，不能访问'
+    });
+  }
+});
 
 
 // 用户登录成功
