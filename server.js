@@ -83,8 +83,12 @@ server.post('/api/userlogin', (req, res) => {
 server.use('/api/teacher', router);
 server.use('/api/student', router2);
 server.use('/per', router3);
-server.use('/api/', routerUser);
-
+server.get('/api/code', (req,res)=>{
+  const cap = captcha.create();
+  // req.session.captcha = cap.text; // session 存储
+  res.type('svg'); // 响应的类型
+  res.send(cap.data);
+});
 // 文件上传
 server.all('/api/upload', upload.single('imgF'), function(req, res, next) {
   // req.file is the `avatar` file
@@ -99,12 +103,8 @@ server.all('/api/upload', upload.single('imgF'), function(req, res, next) {
   res.json({ img: `/server/upload/${file.filename}` });
 });
 
-server.get('/api/code',(req,res)=>{
-  const cap = captcha.create();
-  // req.session.captcha = cap.text; // session 存储
-  res.type('svg'); // 响应的类型
-  res.send(cap.data);
-});
+server.use('/api/', routerUser);
+
 
 server.listen(8888, () => {
   console.log('JSON Server is running');
