@@ -82,6 +82,7 @@ server.post('/api/userlogin', (req, res) => {
 });
 server.use('/api/teacher', router);
 server.use('/api/student', router2);
+// 权限数据
 server.use('/per', router3);
 server.get('/api/code', (req,res)=>{
   const cap = captcha.create();

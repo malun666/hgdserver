@@ -182,7 +182,22 @@ let data = Mock.mock({
     del: 0,
     subon: '2019-05-08 16:57:50'
   }],
-  user_permission: [],
+  user_permission: [
+    {
+      id: 1,
+      userId: 1002,
+      permissionId: 2,
+      del: 0,
+      subOn: '2019-06-10 09:48:01'
+    }
+  ],
+  role_permission: [{
+    id: 1,
+    roleId: 1,
+    permissionId: 2,
+    del: 0,
+    subOn: '2019-06-10 09:49:23'
+  }],
   menu: [{
     id: 1,
     order: 1,
