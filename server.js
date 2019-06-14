@@ -58,7 +58,6 @@ server.use('/api/user', (req, res, next) => {
   }
 });
 
-
 // 用户登录成功
 server.post('/api/userlogin', (req, res) => {
   console.log(1); 
@@ -83,7 +82,6 @@ server.post('/api/userlogin', (req, res) => {
 server.use('/api/teacher', router);
 server.use('/api/student', router2);
 // 权限数据
-server.use('/per', router3);
 server.get('/api/code', (req,res)=>{
   const cap = captcha.create();
   // req.session.captcha = cap.text; // session 存储
@@ -106,6 +104,40 @@ server.all('/api/upload', upload.single('imgF'), function(req, res, next) {
 
 server.use('/api/', routerUser);
 
+// 权限相关接口
+
+// 获取用户的所有权限
+server.use('/per/getUserPer/:id', (req, res) => {
+  // permissionData
+  // res.json({id:req.params.id});
+  // if(permissionData.user_role)
+  // console.log('permissionData :', permissionData.user_permission);
+
+  // 获得当前用户的特殊权限
+  let userPerArr = permissionData.user_permission.filter(item => item.userId == req.params.id);
+  let userPerIdArr = userPerArr.map(userPer => userPer.permissionId);
+  // 获取用户的角色
+  let userRoleArr = permissionData.user_role.filter(item => item.userId == req.params.id);
+  // 获得所有角色的权限
+  let rolePerIdArr = [];
+  permissionData.role_permission.forEach( rolePer => {
+    if(userRoleArr.find(userRole => userRole.roleId == rolePer.roleId)) {
+      rolePerIdArr.push(rolePer.permissionId);
+    }
+  });
+  
+  let totalPerIdArr =[...new Set([...userPerIdArr, ...rolePerIdArr])];
+  let result = [];
+  
+  // 把所有权限
+  permissionData.permission.forEach(per => {
+    if(totalPerIdArr.find(perId => per.id == perId && per.del == 0)) {
+      result.push(per);
+    }
+  });
+  res.json(result);
+});
+server.use('/per', router3);
 
 server.listen(8888, () => {
   console.log('JSON Server is running');

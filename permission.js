@@ -12,7 +12,8 @@ let data = Mock.mock({
     "code|+1": 10000,
     url: ''
   }],
-  "users": [{
+  "users": [
+    {
     id: 1000,
     username: 'wyd',
     password: 'aicoder.com',
@@ -60,7 +61,8 @@ let data = Mock.mock({
     mail: 'Random.email()',
     phone: '189222222',
     isTeacher: true
-  }],
+  }
+],
   role: [{
     id: 5,
     pid: 0,
@@ -115,6 +117,18 @@ let data = Mock.mock({
     del: 0,
     subon: '2019-05-08 16:57:50'
   }, {
+    id: 100,
+    userId: 1002,
+    roleId: 4,
+    del: 0,
+    subon: '2019-05-08 16:57:50'
+  }, {
+    id: 101,
+    userId: 1002,
+    roleId: 3,
+    del: 0,
+    subon: '2019-05-08 16:57:50'
+  },{
     id: 3,
     userId: 1000,
     roleId: 3,
@@ -131,15 +145,15 @@ let data = Mock.mock({
     {
       id: 1,
       userId: 1002,
-      permissionId: 2,
+      permissionId: 1003,
       del: 0,
       subOn: '2019-06-10 09:48:01'
     }
   ],
-  role_permission: [{
-    id: 1,
-    roleId: 1,
-    permissionId: 2,
+  "role_permission|200": [{
+    "id|+1": 1000,
+    roleId: "@pick([1, 2, 3, 4, 5])",
+    "permissionId|+1": 1002,
     del: 0,
     subOn: '2019-06-10 09:49:23'
   }],
