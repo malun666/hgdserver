@@ -1,70 +1,15 @@
 const Mock = require('mockjs');
 let data = Mock.mock({
-  permission: [{
-    id: 1,
+  "permission|321": [{
+    "id|+1": 1000,
     pId: 0,
-    type: 'menu',
-    des: '学生管理',
+    type: Mock.Random.pick(['menu', 'route']),
+    des: '@cword(3)',
     status: 0,
     del: 0,
     subon: '2019-05-08 17:07:16',
     subby: 1001,
-    code: 1,
-    url: ''
-  }, {
-    id: 2,
-    pId: 0,
-    type: 'menu',
-    des: '教师管理',
-    status: 0,
-    del: 0,
-    subon: '2019-05-08 17:07:16',
-    subby: 1001,
-    code: 2,
-    url: ''
-  }, {
-    id: 3,
-    pId: 1,
-    type: 'menu',
-    des: '学生列表',
-    status: 0,
-    del: 0,
-    subon: '2019-05-08 17:07:16',
-    subby: 1001,
-    code: 3,
-    url: ''
-  }, {
-    id: 4,
-    pId: 0,
-    type: 'route',
-    des: '添加学生',
-    status: 0,
-    del: 0,
-    subon: '2019-05-08 17:07:16',
-    subby: 1001,
-    code: 4,
-    url: '/student/add'
-  }, {
-    id: 5,
-    pId: 0,
-    type: 'route',
-    des: '修改学生',
-    status: 0,
-    del: 0,
-    subon: '2019-05-08 17:07:16',
-    subby: 1001,
-    code: 5,
-    url: '/student/update/:id'
-  },{
-    id: 6,
-    pId: 0,
-    type: 'route',
-    des: '用户添加页面button1',
-    status: 0,
-    del: 0,
-    subon: '2019-05-08 17:07:16',
-    subby: 1001,
-    code: 6,
+    "code|+1": 10000,
     url: ''
   }],
   "users": [{
