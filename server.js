@@ -60,7 +60,6 @@ server.use('/api/user', (req, res, next) => {
 
 // 用户登录成功
 server.post('/api/userlogin', (req, res) => {
-  console.log(1); 
   let userName = req.body.username;
   let password = req.body.password;
   let loginUser = userArr.find((item) => item.username == userName && item.password == password);
@@ -108,11 +107,6 @@ server.use('/api/', routerUser);
 
 // 获取用户的所有权限
 server.use('/per/getUserPer/:id', (req, res) => {
-  // permissionData
-  // res.json({id:req.params.id});
-  // if(permissionData.user_role)
-  // console.log('permissionData :', permissionData.user_permission);
-
   // 获得当前用户的特殊权限
   let userPerArr = permissionData.user_permission.filter(item => item.userId == req.params.id);
   let userPerIdArr = userPerArr.map(userPer => userPer.permissionId);

@@ -1,68 +1,6 @@
 const Mock = require('mockjs');
 let data = Mock.mock({
-  "permission|321": [{
-    "id|+1": 1000,
-    pId: 0,
-    type: Mock.Random.pick(['menu', 'route']),
-    des: '@cword(3)',
-    status: 0,
-    del: 0,
-    subon: '2019-05-08 17:07:16',
-    subby: 1001,
-    "code|+1": 10000,
-    url: ''
-  }],
-  "users": [
-    {
-    id: 1000,
-    username: 'wyd',
-    password: 'aicoder.com',
-    del: false,
-    active: true, //  激活
-    avatar: 'http://192.168.1.130:8888/server/img/a1.png',
-    name: "张三",
-    school: '清华大学',
-    mail: '',
-    phone: '189222222',
-    isTeacher: true
-  }, {
-    id: 1001,
-    username: 'ngr',
-    password: 'aicoder.com',
-    del: false,
-    active: true, //  激活
-    avatar: 'http://192.168.1.130:8888/server/img/a1.png',
-    name: "李思",
-    school: '清华大学',
-    mail: '',
-    phone: '189222222',
-    isTeacher: false
-  }, {
-    id: 1002,
-    username: 'admin',
-    password: 'aicoder.com',
-    del: false,
-    active: true, //  激活
-    avatar: 'http://192.168.1.130:8888/server/img/a1.png',
-    name: "李思",
-    school: '清华大学',
-    mail: 'Random.email()',
-    phone: '189222222',
-    isTeacher: true
-  }, {
-    id: 1003,
-    username: 'admin1',
-    password: 'aicoder.com',
-    del: false,
-    active: true, //  激活
-    avatar: 'http://192.168.1.130:8888/server/img/a1.png',
-    name: "李思",
-    school: '清华大学',
-    mail: 'Random.email()',
-    phone: '189222222',
-    isTeacher: true
-  }
-],
+  "permission": [],
   role: [{
     id: 5,
     pid: 0,
@@ -104,59 +42,10 @@ let data = Mock.mock({
     status: 0,
     del: 0
   }],
-  user_role: [{
-    id: 1,
-    userId: 1003,
-    roleId: 1,
-    del: 0,
-    subon: '2019-05-08 16:57:50'
-  }, {
-    id: 2,
-    userId: 1002,
-    roleId: 5,
-    del: 0,
-    subon: '2019-05-08 16:57:50'
-  }, {
-    id: 100,
-    userId: 1002,
-    roleId: 4,
-    del: 0,
-    subon: '2019-05-08 16:57:50'
-  }, {
-    id: 101,
-    userId: 1002,
-    roleId: 3,
-    del: 0,
-    subon: '2019-05-08 16:57:50'
-  },{
-    id: 3,
-    userId: 1000,
-    roleId: 3,
-    del: 0,
-    subon: '2019-05-08 16:57:50'
-  }, {
-    id: 4,
-    userId: 1001,
-    roleId: 4,
-    del: 0,
-    subon: '2019-05-08 16:57:50'
-  }],
+  user_role: [],
   user_permission: [
-    {
-      id: 1,
-      userId: 1002,
-      permissionId: 1003,
-      del: 0,
-      subOn: '2019-06-10 09:48:01'
-    }
   ],
-  "role_permission|200": [{
-    "id|+1": 1000,
-    roleId: "@pick([1, 2, 3, 4, 5])",
-    "permissionId|+1": 1002,
-    del: 0,
-    subOn: '2019-06-10 09:49:23'
-  }],
+  "role_permission": [],
   menu: [{
     id: 1,
     order: 1,
